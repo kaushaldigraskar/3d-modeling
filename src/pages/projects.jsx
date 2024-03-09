@@ -1,5 +1,6 @@
 import "./projects.css";
 import React, { useEffect, useState } from "react";
+import videoSrc from "../assets/galaxy.mp4";
 const projects = () => {
   return (
     <section className="w-100 h-full relative flex-column d-flex p-2 mt-10 gap-3 bg-black">
@@ -9,8 +10,7 @@ const projects = () => {
           loop
           muted
           className="w-100 height-100 object-fit-cover "
-          src="
-        ../assets/galaxy.mp4"
+          src={videoSrc}
         ></video>
         <div className="position-absolute top-50 left-50 w-100 hieght-100 ">
           <h1 className=" font-poppins font-semibold centerText">
