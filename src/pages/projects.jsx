@@ -10,7 +10,7 @@ const projects = () => {
           muted
           className="w-100 height-100 object-fit-cover "
           src="
-        ./assets/galaxy.mp4"
+        ../assets/galaxy.mp4"
         ></video>
         <div className="position-absolute top-50 left-50 w-100 hieght-100 ">
           <h1 className=" font-poppins font-semibold centerText">
