@@ -1,0 +1,107 @@
+@keyframes slideRight {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideLeft {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes show {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  .translate-right {
+    animation: slideRight 1s ease;
+  }
+  
+  .translate-left {
+    animation: slideLeft 1s ease;
+  }
+.reveal{
+animation: show 1s ease;
+}
+.texthead{
+  font-family: 'Chomsky';
+}
+
+.centerText{
+text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);  /* Simulated text shadow effect */
+font-size: 7rem;
+font-weight: 700;  /* Adjust as needed for desired size (approximately 9xl) */
+color: #fff;  /* White text */
+background-color: #000;
+mix-blend-mode: difference;
+}
+.experiance-box{
+  background-color: #000;
+  border: 1px solid #f7931a;  /* Orange-500 equivalent in Bootstrap */
+  color: #3498db;  /* Blue-300 equivalent in Bootstrap */
+  border-radius: .5rem;
+  text-align: left;
+  font-size: larger;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);  /* Shadow effect */
+  overflow: hidden;
+}
+@media screen and (max-width:425px) {
+
+  .centerText{
+    text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);  /* Simulated text shadow effect */
+    font-size: 3.5rem;
+    font-weight: 600;  /* Adjust as needed for desired size (approximately 9xl) */
+    color: #fff;  /* White text */
+    background-color: #000;
+    mix-blend-mode: difference;
+    }
+    
+.experiance-box{
+  background-color: #000;
+  border: 1px solid #f7931a;  /* Orange-500 equivalent in Bootstrap */
+  color: #3498db;  /* Blue-300 equivalent in Bootstrap */
+  border-radius: .5rem;
+  text-align: left;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);  /* Shadow effect */
+  overflow: hidden;
+  font-size: 1rem;
+}
+}
+
+@media screen and (max-width:768px) {
+
+  .centerText{
+    text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);  /* Simulated text shadow effect */
+    font-size: 4.5rem;
+    font-weight: 600;  /* Adjust as needed for desired size (approximately 9xl) */
+    color: #fff;  /* White text */
+    background-color: #000;
+    mix-blend-mode: difference;
+    }
+    
+.experiance-box{
+  background-color: #000;
+  border: 1px solid #f7931a;  /* Orange-500 equivalent in Bootstrap */
+  color: #3498db;  /* Blue-300 equivalent in Bootstrap */
+  border-radius: .5rem;
+  width: 100%;
+  text-align: left;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);  /* Shadow effect */
+  overflow: hidden;
+  font-size: 1.5rem;
+}
+}
