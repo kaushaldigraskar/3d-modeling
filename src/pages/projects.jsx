@@ -1,6 +1,7 @@
 import "./projects.css";
 import React, { useEffect, useState } from "react";
 import videoSrc from "../assets/galaxy.mp4";
+import viddeoSrc2 from "../assets/nebula.mp4";
 const projects = () => {
   return (
     <section className="w-100 h-full relative flex-column d-flex p-2 mt-10 gap-3 bg-black">
@@ -116,7 +117,7 @@ const projects = () => {
           loop
           muted
           class="w-100 height-100 object-fit-cover"
-          src="src/assets/nebula.mp4"
+          src={viddeoSrc2}
         ></video>
         <div className="position-absolute">
           <div class="position-relative top-0 left-0 w-100 height-100 d-flex justify-content-center align-items-center">
