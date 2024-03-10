@@ -2,9 +2,9 @@ import { NavLink } from "react-router-dom";
 
 const navbar = () => {
   return (
-    <header className="d-flex justify-content-around  pb-3 pt-3 bg-black  ">
+    <header className="d-flex justify-content-around align-items-center  pb-3 pt-3 bg-black  ">
       <NavLink to="/" className="nameTag text-decoration-none">
-        <p className="blue-gradient_text">KD</p>
+        <p className="blue-gradient_text m-0">KD</p>
       </NavLink>
       <nav className="d-flex gap-4  ">
         <NavLink

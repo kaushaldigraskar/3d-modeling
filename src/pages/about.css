@@ -1,187 +1,174 @@
-.canvas{
-    position: relative;
-    width: 100%;
-    background-color: transparent;
-    height: 50vh;
+.canvas {
+  position: relative;
+  width: 100%;
+  background-color: transparent;
+  height: 50vh;
 }
-input{
-position: absolute;
-width: calc(100% - 20px) ;
-padding: 10px;
-margin: 10px;
-left: 0;
-z-index: 100;
+input {
+  position: absolute;
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px;
+  left: 0;
+  z-index: 100;
 }
-.word-play{
-    font-size: 2.5em;
-    font-weight: bold;
+.word-play {
+  font-size: 2.5em;
+  font-weight: bold;
 }
 
-.pricing-table{
-    box-shadow: 0px 0px 10px orange
-    ;
+.pricing-table {
+  box-shadow: 0px 0px 10px orange;
+  text-align: center;
+  padding: 30px 0px;
+  border-radius: 5px;
+  position: relative;
+}
+.pricing-table .head {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 50px;
+  transition: all 0.5s ease;
+}
+
+.pricing-table .head .title {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.pricing-table .content .price {
+  box-shadow: 0px 0px 10px rgb(250, 228, 106);
+  margin-top: -50px;
+  transition: all 0.5s ease;
+}
+.pricing-table:hover .content .price {
+  transform: scale(1.2);
+}
+.pricing-table .content .price img {
+  width: 7vw;
+  height: 14vh;
+}
+.pricing-table .content ul {
+  list-style-type: none;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-left: 0px;
+}
+
+.pricing-table .content ul li {
+  margin: 20px 0px;
+  font-size: 14px;
+  color: white;
+  text-decoration: dashed;
+  text-decoration-color: #38bdbc;
+}
+
+.pricing-table .btn.bordered {
+  z-index: 50;
+  color: #333;
+}
+
+.headText {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+}
+.domainImage {
+  width: 8vw;
+  height: 16vh;
+  border-radius: 0.5rem;
+  border-top: 0;
+}
+@keyframes spinOnce {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.imageSize {
+  transition: transform 0.5s;
+}
+.imageSize:hover {
+  animation: spinOnce 1s;
+}
+
+@media screen and (max-width: 768px) {
+  .pricing-table {
+    box-shadow: 0px 0px 10px orange;
     text-align: center;
-    padding: 30px 0px;
+    padding: 20px 0px;
     border-radius: 5px;
     position: relative;
-  
- }
- .pricing-table .head {
-     border-bottom:1px solid #eee;
-     padding-bottom: 50px;
-     transition: all 0.5s ease;
- }
-
- 
- .pricing-table .head .title{
-     margin-bottom: 20px;
-     font-size: 20px;
-     font-weight: 700;
- }
- 
- .pricing-table .content .price{
-     box-shadow: 0px 0px 10px rgb(250, 228, 106);
-     margin-top: -50px;
-      transition: all 0.5s ease;
- }
- .pricing-table:hover .content .price{
-     transform: scale(1.2);
-  
- }
- .pricing-table .content .price img{
-
-     width: 7vw;
-     height: 14vh;
- }
- .pricing-table .content ul{
-    list-style-type: none;
-    margin-bottom: 20px;
-    padding-top: 10px;
-    padding-left: 0px;
- }
- 
- .pricing-table .content ul li{
-     margin: 20px 0px;
-     font-size: 14px;
-     color:white;
-     text-decoration: dashed;
-     text-decoration-color: #38bdbc;
- }
- 
- 
- .pricing-table .btn.bordered {
-     z-index: 50;
-     color: #333;
- }
-
-
- .headText{
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
- }
- .domainImage{
-    width: 8vw;
-    height: 16vh;
-    border-radius: 0.5rem; 
-    border-top:0;
- }
- @keyframes spinOnce {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
   }
-.imageSize{
-    transition: transform 0.5s; 
-}
-.imageSize:hover{
-    animation: spinOnce 1s;
-}
+  .domainImage {
+    width: 10vw;
+    height: 11vh;
+    border-radius: 0.5rem;
+    border-top: 0;
+  }
+  .pricing-table .content .price img {
+    width: 8vw;
+    height: 12vh;
+  }
 
-@media screen and (max-width:768px) {
-    .pricing-table{
-        box-shadow: 0px 0px 10px orange
-        ;
-        text-align: center;
-        padding: 20px 0px;
-        border-radius: 5px;
-        position: relative;
-      
-     }
-    .domainImage{
-        width: 10vw;
-        height: 11vh;
-        border-radius: 0.5rem; 
-        border-top:0;
-    }
-    .pricing-table .content .price img{
-
-        width: 8vw;
-        height: 12vh;
-    }
-    
- .pricing-table .content ul{
+  .pricing-table .content ul {
     list-style-type: none;
     margin-bottom: 20px;
     padding-top: 10px;
- }
- 
- .pricing-table .content ul li{
-     margin: 20px 0px;
-     font-size: 14px;
-     color:white;
-     text-decoration: dashed;
-     text-decoration-color: #38bdbc;
- }
- .nameText{
-    font-family: 'Poppins', sans-serif;
+  }
+
+  .pricing-table .content ul li {
+    margin: 20px 0px;
     font-size: 14px;
- }
+    color: white;
+    text-decoration: dashed;
+    text-decoration-color: #38bdbc;
+  }
+  .nameText {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+  }
 }
-@media screen and (max-width:425px) {
-    
+@media screen and (max-width: 425px) {
+  .pricing-table {
+    box-shadow: 0px 0px 10px orange;
+    text-align: center;
+    padding: 20px 0px;
+    border-radius: 5px;
+    position: relative;
+  }
+  .domainImage {
+    width: 19vw;
+    height: 14vh;
+    border-radius: 0.5rem;
+    border-top: 0;
+  }
+  .pricing-table .content .price img {
+    width: 15vw;
+    height: 12vh;
+  }
 
-    .pricing-table{
-        box-shadow: 0px 0px 10px orange
-        ;
-        text-align: center;
-        padding: 20px 0px;
-        border-radius: 5px;
-        position: relative;
-      
-     }
-    .domainImage{
-        width: 19vw;
-        height: 14vh;
-        border-radius: 0.5rem; 
-        border-top:0;
-    }
-    .pricing-table .content .price img{
-        width: 15vw;
-        height: 12vh;
-    }
-    
- .pricing-table .content ul{
+  .pricing-table .content ul {
     list-style-type: none;
     margin-bottom: 20px;
     padding-top: 10px;
- }
- 
- .pricing-table .content ul li{
-     margin: 20px 0px;
-     font-size: 14px;
-     color:white;
-     text-decoration: dashed;
-     text-decoration-color: #38bdbc;
- }
- .headText{
-    font-family: 'Poppins', sans-serif;
+  }
+
+  .pricing-table .content ul li {
+    margin: 20px 0px;
+    font-size: 14px;
+    color: white;
+    text-decoration: dashed;
+    text-decoration-color: #38bdbc;
+  }
+  .headText {
+    font-family: "Poppins", sans-serif;
     font-size: 2em;
- }
- .nameText{
-    font-family: 'Poppins', sans-serif;
+  }
+  .nameText {
+    font-family: "Poppins", sans-serif;
     font-size: 14px;
- }
+  }
 }

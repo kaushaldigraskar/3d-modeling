@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./consolText.css";
-import profilePhoto from "../assets/images/profile6.png";
+import profilePhoto from "../assets/images/profilephoto.png";
 
 const ConsoleText = ({ words, id, colors }) => {
   useEffect(() => {
