@@ -16,6 +16,7 @@ const contact = () => {
     "transform_to_alt_hero"
   );
   const canvasRef = useRef(null);
+  let animationInProgress = false;
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -54,56 +55,53 @@ const contact = () => {
       });
   };
   function onMouseEnter(value) {
-    let githubvalue = -12;
-    let instagramvalue = -8;
-    let linkedIn = -4;
-
-    if (window.innerWidth === 768) {
-      githubvalue = -13;
-      instagramvalue = -9;
-    } else if (window.innerWidth === 1024) {
-      githubvalue = -14;
-      instagramvalue = -9;
-      linkedIn = -5;
-    }
-
-    const textElement = document.getElementById("text");
-    textElement.style.transition = "transform 0.8s ease";
-
-    switch (value) {
-      case "instagram":
-        textElement.style.transform = "translateY(" + instagramvalue + "vh)";
-        break;
-      case "linkedin":
-        textElement.style.transition = "transform 0.5s ease";
-        textElement.style.transform = "translateY(" + linkedIn + "vh)";
-        break;
-      case "github":
-        textElement.style.transition = "transform 1s ease";
-        textElement.style.transform = "translateY(" + githubvalue + "vh)";
-        break;
-    }
+    console.log(value);
+    createTypingAnimation(value, "text");
   }
-  function onMouseLeave(value) {
-    switch (value) {
-      case "instagram":
-        document.getElementById("text").style.transition =
-          "transform 0.5s ease";
-        document.getElementById("text").style.transform =
-          "translateY(" + 0 + "vh) ";
-        break;
-      case "linkedin":
-        document.getElementById("text").style.transition =
-          "transform 0.8s ease";
-        document.getElementById("text").style.transform =
-          "translateY(" + 0 + "vh) ";
-        break;
-      case "github":
-        document.getElementById("text").style.transition = "transform 1s ease";
-        document.getElementById("text").style.transform =
-          "translateY(" + 0 + "vh) ";
-        break;
+
+  function createTypingAnimation(word, id) {
+    if (animationInProgress) {
+      console.log(
+        "Animation already in progress. Please wait until it completes."
+      );
+      return; // Exit the function if animation is already in progress
     }
+
+    animationInProgress = true;
+
+    let visible = true;
+    let letterCount = 1;
+    let x = 1;
+    let waiting = false;
+    const target = document.getElementById(id);
+
+    const animate = () => {
+      if (letterCount === 0 && !waiting) {
+        waiting = true;
+        target.innerHTML = `${word.substring(0, letterCount)}`;
+        setTimeout(() => {
+          x = 1;
+
+          letterCount += x;
+          waiting = false;
+          animate(); // Call animate recursively
+        }, 800);
+      } else if (letterCount === word.length + 1 && !waiting) {
+        waiting = true;
+        setTimeout(() => {
+          x = -1;
+          letterCount += x;
+          waiting = false;
+          animationInProgress = false; // Reset animation status once completed
+        }, 1000);
+      } else if (!waiting) {
+        target.innerHTML = `${word.substring(0, letterCount)}`;
+        letterCount += x;
+        setTimeout(animate, 90); // Call animate recursively after a delay
+      }
+    };
+
+    animate(); // Start the animation
   }
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -335,29 +333,18 @@ const contact = () => {
             </form>
             <div className="  d-flex flex-row mt-5 text-white  ">
               <span>Here, I usually&nbsp;</span>
-              <div className="string" id="text">
-                <span className="greeting en">
-                  {" "}
-                  <b>Pass</b>
-                </span>
-                <span className="greeting en">
-                  <b>Spend</b>
-                </span>
-                <span className="greeting es">
-                  <b>Waste</b>
-                </span>
-                <span className="greeting de">
-                  <b>Invest</b>
-                </span>
-              </div>
+
+              <span className="greetings" id="text">
+                Pass
+              </span>
+
               <span className="closure">&nbsp;my time</span>
             </div>
             <div className="container-fluid h-10">
               <div className="row d-flex justify-around h-100 ">
                 <div
                   className="flip-card col iconDiv"
-                  onMouseEnter={() => onMouseEnter("instagram")}
-                  onMouseLeave={() => onMouseLeave("instagram")}
+                  onMouseEnter={() => onMouseEnter("Waste")}
                 >
                   <div className="flip-card-inner">
                     <div className="flip-card-front flex justify-center items-center">
@@ -376,8 +363,7 @@ const contact = () => {
                 </div>
                 <div
                   className="flip-card col iconDiv"
-                  onMouseEnter={() => onMouseEnter("linkedin")}
-                  onMouseLeave={() => onMouseLeave("linkedin")}
+                  onMouseEnter={() => onMouseEnter("Spend")}
                 >
                   <div className="flip-card-inner">
                     <div className="flip-card-front flex justify-center items-center">
@@ -396,8 +382,7 @@ const contact = () => {
                 </div>
                 <div
                   className="flip-card col iconDiv"
-                  onMouseEnter={() => onMouseEnter("github")}
-                  onMouseLeave={() => onMouseLeave("github")}
+                  onMouseEnter={() => onMouseEnter("Invest")}
                 >
                   <div className="flip-card-inner">
                     <div className="flip-card-front flex justify-center items-center">
