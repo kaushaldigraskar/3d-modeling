@@ -135,6 +135,11 @@ const projects = () => {
                     InfyLearn-Student and Teacher Application
                   </h2>
                   <p className=" mb-3 ">Jun,2020-Dec,2020</p>
+                  <p className="font-semibold mb-1 ">
+                    <a href="https://play.google.com/store/apps/details?id=com.synactech.stud_side_app">
+                      Application Link
+                    </a>
+                  </p>
                   <ul className="list-disc ml-6 ">
                     <li className=" mb-1">
                       Developed Multi-Tenant School App (InfyLearn): Built
@@ -165,6 +170,11 @@ const projects = () => {
                     Mahanubhav -Calendar Application
                   </h2>
                   <p className=" mb-1 ">Dec 2020-Feb,2021</p>
+                  <p className="font-semibold mb-1 ">
+                    <a href="https://play.google.com/store/apps/details?id=com.synactech.mahanubhav&showAllReviews=true">
+                      Application Link
+                    </a>
+                  </p>
                   <ul className="list-disc ml-6 ">
                     <li className=" mb-1">
                       Dynamic Calendar App with Firebase (Android): Built a
