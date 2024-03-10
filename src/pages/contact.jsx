@@ -57,6 +57,7 @@ const contact = () => {
     let githubvalue = -12;
     let instagramvalue = -8;
     let linkedIn = -4;
+
     if (window.innerWidth === 768) {
       githubvalue = -13;
       instagramvalue = -9;
@@ -65,24 +66,21 @@ const contact = () => {
       instagramvalue = -9;
       linkedIn = -5;
     }
+
+    const textElement = document.getElementById("text");
+    textElement.style.transition = "transform 0.8s ease";
+
     switch (value) {
       case "instagram":
-        document.getElementById("text").style.transition =
-          "transform 0.8s ease";
-        document.getElementById("text").style.transform =
-          "translateY(" + instagramvalue + "vh) ";
+        textElement.style.transform = "translateY(" + instagramvalue + "vh)";
         break;
       case "linkedin":
-        document.getElementById("text").style.transition =
-          "transform 0.5s ease";
-        document.getElementById("text").style.transform =
-          "translateY(" + linkedIn + "vh) ";
-
+        textElement.style.transition = "transform 0.5s ease";
+        textElement.style.transform = "translateY(" + linkedIn + "vh)";
         break;
       case "github":
-        document.getElementById("text").style.transition = "transform 1s ease";
-        document.getElementById("text").style.transform =
-          "translateY(" + githubvalue + "vh) ";
+        textElement.style.transition = "transform 1s ease";
+        textElement.style.transform = "translateY(" + githubvalue + "vh)";
         break;
     }
   }
