@@ -59,7 +59,14 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadow effect */
   overflow: hidden;
 }
-
+.experiance-box h2 {
+  font-size: 1.5em;
+  color: white;
+}
+.project h2 {
+  font-size: 1.5em;
+  color: #3498db; /* Blue-300 equivalent in Bootstrap */
+}
 @media screen and (max-width: 768px) {
   .centerText {
     text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5); /* Simulated text shadow effect */
@@ -80,6 +87,14 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadow effect */
     overflow: hidden;
     font-size: 1.5rem;
+  }
+  .experiance-box h2 {
+    font-size: 1.2em;
+    color: white;
+  }
+  .project h2 {
+    font-size: 1.2em;
+    color: #3498db; /* Blue-300 equivalent in Bootstrap */
   }
 }
 @media screen and (max-width: 480px) {
@@ -104,5 +119,10 @@
   }
   .experiance-box h2 {
     font-size: 1em;
+    color: white;
+  }
+  .project h2 {
+    font-size: 1em;
+    color: #3498db; /* Blue-300 equivalent in Bootstrap */
   }
 }

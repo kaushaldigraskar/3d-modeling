@@ -15,7 +15,6 @@ const contact = () => {
   const [currentAnimation, setCurrentAnimation] = useState(
     "transform_to_alt_hero"
   );
-  const canvasRef = useRef(null);
   let animationInProgress = false;
 
   const handleChange = (e) => {
@@ -55,7 +54,6 @@ const contact = () => {
       });
   };
   function onMouseEnter(value) {
-    console.log(value);
     createTypingAnimation(value, "text");
   }
 
@@ -103,160 +101,8 @@ const contact = () => {
 
     animate(); // Start the animation
   }
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight / 2;
-    class Particle {
-      constructor(effect, x, y, color) {
-        this.effect = effect;
-        this.x = (Math.random() * this.effect.canvasWidth) / 2;
-        this.y = this.effect.canvasHeight + Math.random() * 0.001;
-        this.color = color;
-        this.originX = x;
-        this.originY = y;
-        this.size = this.effect.gap;
-        this.dx = 0;
-        this.dy = 0;
-        this.vx = 0;
-        this.vy = 0;
-        this.force = 0;
-        this.angle = 0;
-        this.distance = 0;
-        this.friction = Math.random() * 0.1 + 0.15;
-        this.ease = Math.random() * 0.1 + 0.005;
-      }
-      draw() {
-        this.effect.context.fillStyle = this.color;
-        this.effect.context.fillRect(this.x, this.y, this.size, this.size);
-      }
-      update() {
-        this.dx = this.effect.mouse.x - this.x;
-        this.dy = this.effect.mouse.y - this.y;
-        this.distance = this.dx * this.dx + this.dy * this.dy;
-        this.force = -this.effect.mouse.radius / this.distance;
-        // console.log(this.distance,effect.mouse.radius);
-        if (this.distance < this.effect.mouse.radius) {
-          this.angle = Math.atan2(this.dy, this.dx);
-          this.vx += this.force * Math.cos(this.angle);
-          this.vy += this.force * Math.sin(this.angle);
-        }
-        this.x +=
-          (this.vx *= this.friction) + (this.originX - this.x) * this.ease;
-        this.y +=
-          (this.vy *= this.friction) + (this.originY - this.y) * this.ease;
-      }
-    }
-    class Effect {
-      constructor(context, canvasWidth, canvasHeight) {
-        this.context = context;
-        this.canvasWidth = canvasWidth;
-        this.canvasHeight = canvasHeight;
-        this.textX = canvasWidth / 2;
-        this.textY = canvasHeight / 2;
-        this.fontSize = Math.min(canvasWidth, canvasHeight) * 0.2;
-        this.maxTextWidth = this.canvasWidth * 1;
-        this.lineHeight = this.fontSize * 0.8;
-        this.particles = [];
-        this.gap = 3;
-        this.mouse = {
-          radius: 10000,
-          x: 0,
-          y: 0,
-        };
-      }
-      wrapText(text) {
-        const gradient = this.context.createLinearGradient(
-          0,
-          0,
-          this.canvasWidth,
-          this.canvasHeight
-        );
-        gradient.addColorStop(0, "#ff9900"); // Orange
-        gradient.addColorStop(0.5, "#ff6600"); // Darker orange
-        gradient.addColorStop(1, "#cc6600"); // Even darker orange
-
-        this.context.fillStyle = gradient;
-        this.context.textAlign = "center";
-        this.context.textBaseline = "middle";
-        this.context.font = this.fontSize + "px Helvetica";
-        this.context.linewidth = 3;
-        this.context.strokeStyle = "white";
-
-        let linesArray = [];
-        let lineCounter = 0;
-        let line = "";
-        let words = text.split(" ");
-        for (let index = 0; index < words.length; index++) {
-          let testLine = line + words[index] + " ";
-          if (this.context.measureText(testLine).width > this.maxTextWidth) {
-            line = words[index] + " ";
-            lineCounter++;
-          } else {
-            line = testLine;
-          }
-          linesArray[lineCounter] = line;
-        }
-        let textHieght = this.lineHeight * lineCounter;
-        this.textY = this.canvasHeight / 2 - textHieght / 2;
-        linesArray.forEach((el, index) => {
-          this.context.fillText(
-            el,
-            this.textX,
-            this.textY + index * this.lineHeight
-          );
-          this.context.strokeText(
-            el,
-            this.textX,
-            this.textY + index * this.lineHeight
-          );
-        });
-        this.convertToParticles();
-      }
-      convertToParticles() {
-        this.particles = [];
-        const pixels = this.context.getImageData(
-          0,
-          0,
-          this.canvasWidth,
-          this.canvasHeight
-        ).data;
-        this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-        for (let y = 0; y < this.canvasHeight; y += this.gap) {
-          for (let x = 0; x < this.canvasWidth; x += this.gap) {
-            const index = (y * this.canvasWidth + x) * 4;
-            const alpha = pixels[index + 3];
-            if (alpha > 0) {
-              const red = pixels[index];
-              const green = pixels[index + 1];
-              const blue = pixels[index + 2];
-              const rgb = `rgb(${red},${green},${blue})`;
-              this.particles.push(new Particle(this, x, y, rgb));
-            }
-          }
-        }
-      }
-      render() {
-        this.particles.forEach((particle) => {
-          particle.update();
-          particle.draw();
-        });
-      }
-    }
-
-    const effect = new Effect(ctx, canvas.width, canvas.height);
-    effect.wrapText("Creating Connections, Captivating Designs.");
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      effect.render();
-      requestAnimationFrame(animate);
-    }
-    animate();
-  }, []);
   return (
     <section className="w-100 h-100 relative paddingClass  bg-black  ">
-      <canvas id="canvas" ref={canvasRef} className="canvas"></canvas>
       <div className="container-fluid">
         <div className="row">
           <div className="col videoCanvas">
@@ -347,10 +193,10 @@ const contact = () => {
                   onMouseEnter={() => onMouseEnter("Waste")}
                 >
                   <div className="flip-card-inner">
-                    <div className="flip-card-front flex justify-center items-center">
+                    <div className="flip-card-front flex justify-content-center align-items-center">
                       <img className="iconSize d-flex" src={instagram} />
                     </div>
-                    <div className="flip-card-back flex justify-center items-center">
+                    <div className="flip-card-back flex justify-content-center align-items-center">
                       <a
                         href="https://www.instagram.com/the_______alchemist/?hl=en"
                         target="_blank"
@@ -366,10 +212,10 @@ const contact = () => {
                   onMouseEnter={() => onMouseEnter("Spend")}
                 >
                   <div className="flip-card-inner">
-                    <div className="flip-card-front flex justify-center items-center">
+                    <div className="flip-card-front flex justify-content-center align-items-center">
                       <img className="iconSize flex" src={linkedin} />
                     </div>
-                    <div className="flip-card-back flex justify-center items-center">
+                    <div className="flip-card-back flex justify-content-center align-items-center">
                       <a
                         href="https://www.linkedin.com/in/kaushal-digraskar-45599614b/"
                         target="_blank"
@@ -385,10 +231,10 @@ const contact = () => {
                   onMouseEnter={() => onMouseEnter("Invest")}
                 >
                   <div className="flip-card-inner">
-                    <div className="flip-card-front flex justify-center items-center">
+                    <div className="flip-card-front flex justify-content-center align-items-center">
                       <img className="iconSize flex" src={github} />
                     </div>
-                    <div className="flip-card-back flex justify-center items-center">
+                    <div className="flip-card-back flex justify-content-center align-items-center">
                       <a
                         href="https://github.com/kaushaldigraskar"
                         target="_blank"

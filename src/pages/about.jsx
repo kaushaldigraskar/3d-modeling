@@ -24,83 +24,108 @@ const about = () => {
       />
       <hr />
       <div className="container-fluid text-white">
-        <div className=" row">
-          <div className=" col d-flex flex-column justify-evenly align-items-center gap-9">
+        <div className="row">
+          <div className=" col-md-6 d-flex flex-column  justify-content-evenly align-items-center gap-5">
             <h1 className="headText p-3">
               <strong>Love to work in these domains...</strong>
             </h1>
-            <div className="container">
-              <div className="row  gap-2 p-3">
-                <div className="card col d-flex flex-column  justify-center align-items-center">
-                  <img src={internet} alt="Angular" className="domainImage" />
-                  <p className="p-3 nameText">Web applications</p>
+            <div className="row row-cols-1 row-cols-md-1 row-cols-lg-3 gy-3 gx-5 p-3">
+              <div className="col d-flex justify-content-center">
+                <div className="card">
+                  <img
+                    src={internet}
+                    alt="Web applications"
+                    className="domainImage"
+                  />
+                  <p className=" nameText">Web applications</p>
                 </div>
-                <div className="card col d-flex flex-column  justify-center align-items-center">
-                  <img src={mobile} alt="ionic" className="domainImage" />
-                  <p className="p-3 nameText">Mobile applications</p>
+              </div>
+              <div className="col d-flex justify-content-center">
+                <div className="card">
+                  <img
+                    src={mobile}
+                    alt="Mobile applications"
+                    className="domainImage"
+                  />
+                  <p className=" nameText">Mobile applications</p>
                 </div>
-                <div className="card col d-flex flex-column  justify-center align-items-center">
-                  <img src={desktop} alt="HTML" className="domainImage" />
-                  <p className="p-3 nameText">Desktop applications</p>
+              </div>
+              <div className="col d-flex justify-content-center">
+                <div className="card">
+                  <img
+                    src={desktop}
+                    alt="Desktop applications"
+                    className="domainImage"
+                  />
+                  <p className=" nameText">Desktop applications</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="col d-flex flex-column justify-evenly align-items-center gap-9">
+          <div className="  col-md-6 d-flex flex-column justify-content-evenly align-items-center gap-5">
             <h1 className="headText p-3">
               <strong>Languages that I have worked on...</strong>
             </h1>
-            <div className="container-fluid">
-              <div className="row  gap-1 p-3 w-100 ">
-                <div className="card col d-flex  flex-column justify-center align-items-center">
+            <div className="row d-flex justify-content-evenly row-cols-2 row-cols-md-3 row-cols-lg-3 g-3">
+              <div className="col d-flex justify-content-center">
+                <div className="card">
                   <img
                     src={angular}
                     alt="Angular"
                     className="domainImage imageSize"
+                    title="Angular development"
                   />
-                  <p className="p-3 nameText">Angular</p>
-                </div>
-                <div className="card col d-flex  flex-column justify-center align-items-center">
-                  <img
-                    src={ionic}
-                    alt="ionic"
-                    className="domainImage imageSize"
-                  />
-                  <p className="p-3 nameText">Ionic</p>
-                </div>
-                <div className="card col d-flex flex-column justify-center align-items-center ">
-                  <img
-                    src={android}
-                    alt="android"
-                    className="domainImage imageSize"
-                  />
-                  <p className="p-3 nameText">Android app development</p>
                 </div>
               </div>
-              <div class="row gap-1 p-3 w-100 ">
-                <div className="card col d-flex flex-column justify-center align-items-center">
+              <div className="col d-flex justify-content-center">
+                <div className="card">
+                  <img
+                    src={ionic}
+                    alt="Ionic"
+                    className="domainImage imageSize"
+                    title="Ionic development"
+                  />
+                </div>
+              </div>
+              <div className="col d-flex justify-content-center">
+                <div className="card">
+                  <img
+                    src={android}
+                    alt="Android"
+                    title="
+                      Android development"
+                    className="domainImage imageSize"
+                  />
+                </div>
+              </div>
+              <div className="col d-flex justify-content-center">
+                <div className="card">
                   <img
                     src={html}
                     alt="HTML"
                     className="domainImage imageSize"
+                    title="HTML|CSS|Javascript development"
                   />
-                  <p className="p-3 nameText">HTML|CSS|JS</p>
                 </div>
-                <div className="card col d-flex flex-column justify-center align-items-center">
+              </div>
+              <div className="col d-flex justify-content-center">
+                <div className="card">
                   <img
                     src={java}
                     alt="Java"
-                    className="domainImage imageSize "
+                    className="domainImage imageSize"
+                    title="Java development"
                   />
-                  <p className="p-3 nameText">Java</p>
                 </div>
-                <div className="card col d-flex flex-column justify-center align-items-center">
+              </div>
+              <div className="col d-flex justify-content-center">
+                <div className="card">
                   <img
                     src={python}
-                    alt="python"
+                    alt="Python"
                     className="domainImage imageSize"
+                    title="Python development"
                   />
-                  <p className="p-3 nameText">Python</p>
                 </div>
               </div>
             </div>
@@ -109,7 +134,7 @@ const about = () => {
       </div>
 
       <div className="container-fluid">
-        <div className="row gap-5 pt-4">
+        <div className="row gap-5 p-3 pt-4">
           <div className="pricing-table col ">
             <div className="head">
               <h4 className="title">Languages</h4>

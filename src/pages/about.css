@@ -74,10 +74,16 @@ input {
   font-size: 1.5rem;
 }
 .domainImage {
-  width: 8vw;
-  height: 16vh;
+  width: auto; /* Allow the image to adjust its width */
+  max-width: 100%; /* Ensure the image does not exceed its container's width */
+  height: auto; /* Allow the image to adjust its height */
+  max-height: 16vh; /* Set maximum height */
   border-radius: 0.5rem;
   border-top: 0;
+}
+.nameText {
+  font-family: "Poppins", sans-serif;
+  font-size: 1vw; /* Adjust font size based on viewport width */
 }
 @keyframes spinOnce {
   0% {
@@ -103,8 +109,8 @@ input {
     position: relative;
   }
   .domainImage {
-    width: 10vw;
-    height: 11vh;
+    width: auto;
+    max-height: 20vh;
     border-radius: 0.5rem;
     border-top: 0;
   }
@@ -128,7 +134,7 @@ input {
   }
   .nameText {
     font-family: "Poppins", sans-serif;
-    font-size: 14px;
+    font-size: small; /* Adjust font size based on viewport width */
   }
 }
 @media screen and (max-width: 480px) {
@@ -140,8 +146,8 @@ input {
     position: relative;
   }
   .domainImage {
-    width: 19vw;
-    height: 14vh;
+    width: auto;
+    max-height: 10vh;
     border-radius: 0.5rem;
     border-top: 0;
   }
@@ -168,7 +174,8 @@ input {
     font-size: 2em;
   }
   .nameText {
+    margin-top: 2px;
     font-family: "Poppins", sans-serif;
-    font-size: 14px;
+    font-size: 8px;
   }
 }

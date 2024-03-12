@@ -1,24 +1,163 @@
 import "./projects.css";
-import React, { useEffect, useState } from "react";
-import videoSrc from "../assets/galaxy.mp4";
+import React, { useEffect, useRef } from "react";
 import viddeoSrc2 from "../assets/nebula.mp4";
 const projects = () => {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight / 2;
+    class Particle {
+      constructor(effect, x, y, color) {
+        this.effect = effect;
+        this.x = (Math.random() * this.effect.canvasWidth) / 2;
+        this.y = this.effect.canvasHeight + Math.random() * 0.001;
+        this.color = color;
+        this.originX = x;
+        this.originY = y;
+        this.size = this.effect.gap;
+        this.dx = 0;
+        this.dy = 0;
+        this.vx = 0;
+        this.vy = 0;
+        this.force = 0;
+        this.angle = 0;
+        this.distance = 0;
+        this.friction = Math.random() * 0.1 + 0.15;
+        this.ease = Math.random() * 0.1 + 0.005;
+      }
+      draw() {
+        this.effect.context.fillStyle = this.color;
+        this.effect.context.fillRect(this.x, this.y, this.size, this.size);
+      }
+      update() {
+        this.dx = this.effect.mouse.x - this.x;
+        this.dy = this.effect.mouse.y - this.y;
+        this.distance = this.dx * this.dx + this.dy * this.dy;
+        this.force = -this.effect.mouse.radius / this.distance;
+        // console.log(this.distance,effect.mouse.radius);
+        if (this.distance < this.effect.mouse.radius) {
+          this.angle = Math.atan2(this.dy, this.dx);
+          this.vx += this.force * Math.cos(this.angle);
+          this.vy += this.force * Math.sin(this.angle);
+        }
+        this.x +=
+          (this.vx *= this.friction) + (this.originX - this.x) * this.ease;
+        this.y +=
+          (this.vy *= this.friction) + (this.originY - this.y) * this.ease;
+      }
+    }
+    class Effect {
+      constructor(context, canvasWidth, canvasHeight) {
+        this.context = context;
+        this.canvasWidth = canvasWidth;
+        this.canvasHeight = canvasHeight;
+        this.textX = canvasWidth / 2;
+        this.textY = canvasHeight / 2;
+        this.fontSize = Math.min(canvasWidth, canvasHeight) * 0.3;
+        this.maxTextWidth = this.canvasWidth * 1;
+        this.lineHeight = this.fontSize * 0.8;
+        this.particles = [];
+        this.gap = 3;
+        this.mouse = {
+          radius: 10000,
+          x: 0,
+          y: 0,
+        };
+      }
+      wrapText(text) {
+        const gradient = this.context.createLinearGradient(
+          0,
+          0,
+          this.canvasWidth,
+          this.canvasHeight
+        );
+        gradient.addColorStop(0, "#ff9900"); // Orange
+        gradient.addColorStop(0.5, "#ff6600"); // Darker orange
+        gradient.addColorStop(1, "#cc6600"); // Even darker orange
+
+        this.context.fillStyle = gradient;
+        this.context.textAlign = "center";
+        this.context.textBaseline = "middle";
+        this.context.font = this.fontSize + "px Helvetica";
+        this.context.linewidth = 3;
+        this.context.strokeStyle = "white";
+
+        let linesArray = [];
+        let lineCounter = 0;
+        let line = "";
+        let words = text.split(" ");
+        for (let index = 0; index < words.length; index++) {
+          let testLine = line + words[index] + " ";
+          if (this.context.measureText(testLine).width > this.maxTextWidth) {
+            line = words[index] + " ";
+            lineCounter++;
+          } else {
+            line = testLine;
+          }
+          linesArray[lineCounter] = line;
+        }
+        let textHieght = this.lineHeight * lineCounter;
+        this.textY = this.canvasHeight / 2 - textHieght / 2;
+        linesArray.forEach((el, index) => {
+          this.context.fillText(
+            el,
+            this.textX,
+            this.textY + index * this.lineHeight
+          );
+          this.context.strokeText(
+            el,
+            this.textX,
+            this.textY + index * this.lineHeight
+          );
+        });
+        this.convertToParticles();
+      }
+      convertToParticles() {
+        this.particles = [];
+        const pixels = this.context.getImageData(
+          0,
+          0,
+          this.canvasWidth,
+          this.canvasHeight
+        ).data;
+        this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+        for (let y = 0; y < this.canvasHeight; y += this.gap) {
+          for (let x = 0; x < this.canvasWidth; x += this.gap) {
+            const index = (y * this.canvasWidth + x) * 4;
+            const alpha = pixels[index + 3];
+            if (alpha > 0) {
+              const red = pixels[index];
+              const green = pixels[index + 1];
+              const blue = pixels[index + 2];
+              const rgb = `rgb(${red},${green},${blue})`;
+              this.particles.push(new Particle(this, x, y, rgb));
+            }
+          }
+        }
+      }
+      render() {
+        this.particles.forEach((particle) => {
+          particle.update();
+          particle.draw();
+        });
+      }
+    }
+
+    const effect = new Effect(ctx, canvas.width, canvas.height);
+    effect.wrapText("Proven Track Record");
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      effect.render();
+      requestAnimationFrame(animate);
+    }
+    animate();
+  }, []);
   return (
     <section className="w-100 h-full relative flex-column d-flex mt-10 gap-3 bg-black">
-      <div className="w-100 height-100 relative d-flex flex-column justify-center align-items-center">
-        <video
-          autoPlay
-          loop
-          muted
-          className="w-100 height-100 object-fit-cover "
-          src={videoSrc}
-        ></video>
-        <div className="position-absolute top-50 left-50 w-100 hieght-100 ">
-          <h1 className=" font-poppins font-semibold centerText">
-            My Work Experience
-          </h1>
-        </div>
-      </div>
+      <canvas id="canvas" ref={canvasRef} className="canvas"></canvas>
       <div className="d-flex w-100">
         <div className="container-fluid">
           <div className="row ">
@@ -127,7 +266,7 @@ const projects = () => {
       </div>
       <div className=" d-flex w-full">
         <div className="container-fluid d-flex justify-content-center">
-          <div className="row  w-100 text-white " id="card2">
+          <div className="row  w-100 text-white project " id="card2">
             <div className="col-md-4 mb-3">
               <div className=" bg-black border rounded-4  h-100  text-blue-300 text-start  ">
                 <div className="p-2">
@@ -164,7 +303,7 @@ const projects = () => {
               </div>
             </div>
             <div className="col-md-4 mb-3">
-              <div className=" bg-black border rounded-4  h-100  text-blue-300  text-start">
+              <div className=" bg-black border rounded-4  h-100   text-start">
                 <div className="p-2">
                   <h2 className=" font-semibold mb-1">
                     Mahanubhav -Calendar Application

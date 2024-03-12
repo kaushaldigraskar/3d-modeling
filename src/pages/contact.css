@@ -88,7 +88,7 @@
   height: 10vh;
 }
 .iconSize {
-  width: 4vw;
+  width: auto;
   height: 8vh;
 }
 @keyframes move {
@@ -154,8 +154,7 @@
   background-color: transparent;
   margin-top: 3vh;
 }
-@media screen and (max-width: 1024px) {
-}
+
 @media screen and (max-width: 768px) {
   .paddingClass {
     padding: 1rem;
@@ -173,7 +172,7 @@
     /* animation: move 4s infinite; */
   }
   .iconSize {
-    width: 6vw;
+    width: auto;
     height: 8vh;
   }
 }
@@ -194,7 +193,7 @@
     /* animation: move 4s infinite; */
   }
   .iconSize {
-    width: 6vw;
+    width: auto;
     height: 6vh;
   }
 }
