@@ -1,10 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-
-
 @font-face {
   font-family: "Chomsky";
-  src: url('./assets/fonts/Chomsky.otf') format('opentype');
+  src: url("./assets/fonts/Chomsky.otf") format("opentype");
 }
 
 :root {
@@ -23,7 +21,6 @@ body:has(.card[data-color="blue"]:hover) {
 body:has(.card[data-color="green"]:hover) {
   background-color: rgb(var(--green-rgb) / 25%);
 }
-
 
 .glassmorphism {
   background: rgba(8, 116, 239, 0.07);
@@ -130,22 +127,31 @@ body:has(.card[data-color="green"]:hover) {
 .neo-btn {
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
-  color: #38bdbc;  /* Bootstrap's blue equivalent */
+  color: #38bdbc; /* Bootstrap's blue equivalent */
   text-align: center;
   font-weight: bold;
   text-decoration: none;
   width: 100%;
   position: absolute;
-  bottom: -25px;  /* -bottom-5 converted to pixels */
+  bottom: -25px; /* -bottom-5 converted to pixels */
   margin: 0 auto;
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;  /* gap-3 converted to pixels */
+  gap: 1rem; /* gap-3 converted to pixels */
+}
+.loader {
+  width: 20vw;
+  height: 20vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 @media (min-width: 576px) {
- .neo-btn{ width: 50%;  /* sm:w-1/2 */
-}
+  .neo-btn {
+    width: 50%; /* sm:w-1/2 */
+  }
 }
