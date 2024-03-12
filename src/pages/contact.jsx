@@ -135,7 +135,7 @@ const contact = () => {
                   onFocus={handleFocus}
                   onBlur={handleBlur}
                   type="text"
-                  placeholder="name"
+                  placeholder="Name"
                 />
               </div>
               <div className="input-container ic2">
