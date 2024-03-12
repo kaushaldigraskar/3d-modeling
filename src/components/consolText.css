@@ -18,7 +18,7 @@
     object-fit: contain;
   }
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 480px) {
   .word-play {
     font-size: 1.5em;
     font-weight: bold;

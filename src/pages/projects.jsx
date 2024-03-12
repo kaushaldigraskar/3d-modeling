@@ -4,7 +4,7 @@ import videoSrc from "../assets/galaxy.mp4";
 import viddeoSrc2 from "../assets/nebula.mp4";
 const projects = () => {
   return (
-    <section className="w-100 h-full relative flex-column d-flex p-2 mt-10 gap-3 bg-black">
+    <section className="w-100 h-full relative flex-column d-flex mt-10 gap-3 bg-black">
       <div className="w-100 height-100 relative d-flex flex-column justify-center align-items-center">
         <video
           autoPlay
@@ -21,8 +21,8 @@ const projects = () => {
       </div>
       <div className="d-flex w-100">
         <div className="container-fluid">
-          <div className="row gap-4 ">
-            <div className="col w-100 ">
+          <div className="row ">
+            <div className="col-md-6 mb-3">
               <div className="flex justify-start">
                 <div className="experiance-box h-100 ">
                   <div className="p-2">
@@ -73,7 +73,7 @@ const projects = () => {
                 </div>
               </div>
             </div>
-            <div className="col w-100 ">
+            <div className="col-md-6 mb-3">
               <div className="experiance-box h-100">
                 <div className="p-2">
                   <h2 className="text-lg font-semibold mb-1 ">
@@ -126,12 +126,12 @@ const projects = () => {
         </div>
       </div>
       <div className=" d-flex w-full">
-        <div className="container-fluid m-0 ">
-          <div className="row gap-2 w-100 text-white " id="card2">
-            <div className="col">
+        <div className="container-fluid d-flex justify-content-center">
+          <div className="row  w-100 text-white " id="card2">
+            <div className="col-md-4 mb-3">
               <div className=" bg-black border rounded-4  h-100  text-blue-300 text-start  ">
                 <div className="p-2">
-                  <h2 className="text-lg font-semibold mb-1">
+                  <h2 className=" font-semibold mb-1">
                     InfyLearn-Student and Teacher Application
                   </h2>
                   <p className=" mb-3 ">Jun,2020-Dec,2020</p>
@@ -163,10 +163,10 @@ const projects = () => {
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col-md-4 mb-3">
               <div className=" bg-black border rounded-4  h-100  text-blue-300  text-start">
                 <div className="p-2">
-                  <h2 className="text-lg font-semibold mb-1">
+                  <h2 className=" font-semibold mb-1">
                     Mahanubhav -Calendar Application
                   </h2>
                   <p className=" mb-1 ">Dec 2020-Feb,2021</p>
@@ -197,10 +197,10 @@ const projects = () => {
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col-md-4 mb-3">
               <div className=" bg-black border rounded-4  h-100 border-orange-500 text-blue-300 text-start">
                 <div className="p-2">
-                  <h2 className="text-lg font-semibold mb-1">
+                  <h2 className=" font-semibold mb-1">
                     Java-Desktop Application
                   </h2>
                   <p className=" mb-3 "> Nov 2019 - Jan 2020</p>

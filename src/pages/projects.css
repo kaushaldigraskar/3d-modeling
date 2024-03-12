@@ -59,27 +59,6 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadow effect */
   overflow: hidden;
 }
-@media screen and (max-width: 425px) {
-  .centerText {
-    text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5); /* Simulated text shadow effect */
-    font-size: 3.5rem;
-    font-weight: 600; /* Adjust as needed for desired size (approximately 9xl) */
-    color: #fff; /* White text */
-    background-color: #000;
-    mix-blend-mode: difference;
-  }
-
-  .experiance-box {
-    background-color: #000;
-    border: 1px solid #f7931a; /* Orange-500 equivalent in Bootstrap */
-    color: #3498db; /* Blue-300 equivalent in Bootstrap */
-    border-radius: 0.5rem;
-    text-align: left;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadow effect */
-    overflow: hidden;
-    font-size: 1rem;
-  }
-}
 
 @media screen and (max-width: 768px) {
   .centerText {
@@ -101,5 +80,29 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadow effect */
     overflow: hidden;
     font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .centerText {
+    text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5); /* Simulated text shadow effect */
+    font-size: 3.5rem;
+    font-weight: 600; /* Adjust as needed for desired size (approximately 9xl) */
+    color: #fff; /* White text */
+    background-color: #000;
+    mix-blend-mode: difference;
+  }
+
+  .experiance-box {
+    background-color: #000;
+    border: 1px solid #f7931a; /* Orange-500 equivalent in Bootstrap */
+    color: #3498db; /* Blue-300 equivalent in Bootstrap */
+    border-radius: 0.5rem;
+    text-align: left;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadow effect */
+    overflow: hidden;
+    font-size: 1em;
+  }
+  .experiance-box h2 {
+    font-size: 1em;
   }
 }

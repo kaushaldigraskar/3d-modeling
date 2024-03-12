@@ -177,7 +177,7 @@
     height: 8vh;
   }
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 480px) {
   .paddingClass {
     padding: 1rem;
   }
